@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class triplet {
     public static int[]  Triplet(int[] nums)
