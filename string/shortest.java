@@ -30,6 +30,7 @@ public class shortest {
     public static void main (String args[])
     {
         String direction = "WNEENESENNN";
-        System.out.println("Shortest path: " + shortestPath(direction));
+        System.out.printf("Shortest path: %.2f%n", shortestPath(direction));
+        // System.out.println("Shortest path: " + String.format("%.2f", shortestPath(direction)));
     }
 }
