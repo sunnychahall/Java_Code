@@ -12,9 +12,26 @@ public class bit {
         return Bitmask | n;
     }
 
+    public static int clearBit(int n, int i)
+    {
+        int Bitmask = ~(1 << i);
+        return Bitmask & n;
+    }
+
+    public static int UpdateBit(int n, int i, int val)
+    {
+        clearBit(n,  i);
+        int Bitmask = val << i;
+        return Bitmask | n;
+        
+
+    }
+
     public static void main(String args[])
     {
         System.out.println(Get_ith_Bit(4 , 2));
         System.out.println(set_Bit(4, 2));
+        System.out.println(clearBit(4, 2));
+        System.out.println(UpdateBit(4, 2, 0));
     }
 }
