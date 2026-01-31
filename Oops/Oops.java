@@ -5,15 +5,20 @@ public class Oops
         Pen p1 = new Pen(); // created a pen object called p1
         p1.setColour("Blue");
         System.out.println(p1.colour);
-        p1.tip = 5;
-        System.out.println(p1.tip);
+        p1.setTip(5);
+        System.out.println(p1.getTip());
         
     }
 }
 class Pen
 {
     String colour;
-    int tip;
+    private int tip;
+
+    int getTip()
+    {
+        return this.tip;
+    }
 
     void setColour(String newColour)
     {
