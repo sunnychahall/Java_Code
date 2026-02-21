@@ -10,6 +10,8 @@ public class numbers
         print_n(n);
         System.out.println("Factorial of n: " + n);
         System.out.println(factorial(n));
+        System.out.println("Sum of n numbers: ");
+        System.out.println("Sum:" + Sum(n));
     }
 
     public static void print_n(int n)
@@ -35,5 +37,15 @@ public class numbers
             }
         return n * factorial(n - 1);
         
+    }
+
+    public static int Sum(int n)
+    {
+        if (n == 1 || n == 0)
+            {
+                return n;
+            }
+        int total = n + Sum(n - 1);
+        return total; 
     }
 }
