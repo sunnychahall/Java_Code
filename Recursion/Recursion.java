@@ -1,9 +1,10 @@
 public class Recursion{
     public static void main(String[] args)
     {
-        int[] arr = {2, 4, 5, 7, 1};
+        int[] arr = {2, 2, 2, 4, 5, 7};
         System.out.println(isSort(arr, 0));
         System.out.println(power(5, 3));
+        System.out.println(lastoccur(arr, 2, 0));
 
     }
 
@@ -29,5 +30,25 @@ public class Recursion{
                 return 1;
             }
         return x * power(x, n - 1); 
+    }
+
+    public static int lastoccur(int[] arr, int key, int i)
+    {
+        //base case
+        if (i == arr.length)
+            {
+                return -1;
+            }
+
+        // look forward
+        int index = lastoccur(arr, key, i + 1);
+
+        //check with self
+        if (index == -1 && arr[i] == key)
+            {
+                return i;
+            }
+        return index;
+        
     }
 }
