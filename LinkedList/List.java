@@ -79,6 +79,55 @@ public class List {
             System.out.println("null");
         }
 
+        public int removeFirst()
+        {
+            int val = 0;
+            if (size == 0)
+                {
+                    System.out.println("List does not exist");
+                    return Integer.MIN_VALUE;
+                }
+            if (size == 1)
+                {
+                    val = head.data;
+                    head = tail = null;
+                    size--;
+                }
+             val = head.data;
+            head = head.next;
+            size--;
+            return val;
+        }
+    
+
+    public int removeLast()
+    {
+        int val = 0;
+        if (size == 0)
+            {
+                System.out.println("List does not exist");
+                return Integer.MIN_VALUE;
+            }
+        if (size == 1)
+            {
+                val = head.data;
+                head = tail = null;
+                size--;
+            }
+        Node temp = head;
+        for (int i = 0; i < size - 2; i++)
+            {
+                temp =temp.next;
+            }
+         val = temp.next.data;
+         tail = temp;
+         temp.next = null;
+
+        
+        size--;
+        return val;
+    }
+
     
     public static void main(String[] args) {
         size = 0;
@@ -96,7 +145,13 @@ public class List {
         ll.AddINDEX(3, 3);
         ll.print();
         System.out.println(size);
+        ll.removeFirst();
+        ll.removeLast();
+        ll.removeLast();
+        ll.print();
+        System.out.println(size);
         
+
     }
 }
 
