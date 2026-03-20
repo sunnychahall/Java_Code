@@ -128,6 +128,32 @@ public class List {
         return val;
     }
 
+    public int recSearch(int data)
+    {
+        return Rec(head, data);
+    }
+
+    public int Rec(Node head, int data)
+    {
+        if (head == null)
+            {
+                return -1;
+            }
+        if (head.data == data)
+            {
+                return 0;
+            }
+        int index = Rec(head.next, data);
+        if (index == -1)
+            {
+                return -1;
+            }
+            else
+                {
+        return index + 1;
+                }
+    }
+
     
     public static void main(String[] args) {
         size = 0;
@@ -139,17 +165,23 @@ public class List {
         ll.addFirst(73);
         ll.addFirst(53);
         ll.addLast(57);
+        
         ll.addLast(56);
         ll.addLast(55);
         ll.addLast(5);
         ll.AddINDEX(3, 3);
+        
         ll.print();
         System.out.println(size);
         ll.removeFirst();
         ll.removeLast();
         ll.removeLast();
+        ll.addLast(3);
         ll.print();
+        
         System.out.println(size);
+
+       System.out.println(ll.recSearch(3));
         
 
     }
