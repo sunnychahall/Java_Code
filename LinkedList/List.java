@@ -158,50 +158,121 @@ public class List {
 
     public int search(int data)
     {
+        Node h = head;
         int i = 0;
-        while (head.next != null)
+        while (h != null)
             {
-                if (head.data == data)
+                if (h.data == data)
                     {
                         return i;
                     }
                     i++;
-                    head = head.next;
+                    h = h.next;
             }
         return - 1;
+    }
+
+    public Node Rev(Node h)
+    {
+         Node next;
+         Node prev = null;
+         Node curr = h;
+         while (curr != null)
+            {
+                next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+
+            return prev;
+    }
+
+
+    public boolean isPalindrome(Node h)
+    {
+        if (h == null || h.next == null)
+            {
+                return true;
+            } 
+        //mid
+        Node Mid = findMid();
+
+        //reverse from mid
+
+       Node temp =  Rev(Mid);
+
+        //compare
+        Node right = temp;
+        Node left = h; 
+        while (right != null)
+            {
+                if (right.data != left.data)
+                    {
+                        return false;
+                    }
+                    right = right.next;
+                    left = left.next;
+            }
+
+        return true;
+    }
+
+
+    public Node findMid()
+    {
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null)
+            {
+                slow = slow.next; //+1
+                fast = fast.next.next; // + 2
+            }
+
+        return slow;
     }
     
     public static void main(String[] args) {
         size = 0;
        List ll = new List();
 
-        ll.addFirst(53);
-        ll.addFirst(43);
-        ll.addFirst(23);
-        ll.addFirst(73);
-        ll.addFirst(53);
-        ll.addLast(57);
+        // ll.addFirst(53);
+        // ll.addFirst(43);
+        // ll.addFirst(23);
+        // ll.addFirst(73);
+        // ll.addFirst(53);
+        // ll.addLast(57);
         
-        ll.addLast(56);
-        ll.addLast(55);
-        ll.addLast(5);
-        ll.AddINDEX(3, 3);
+        // ll.addLast(56);
+        // ll.addLast(55);
+        // ll.addLast(5);
+        // ll.AddINDEX(3, 3);
         
-        ll.print();
-        System.out.println(size);
-        ll.removeFirst();
-        ll.removeLast();
-        ll.removeLast();
-        ll.addLast(3);
-        ll.print();
+        // ll.print();
+        // System.out.println(size);
+        // ll.removeFirst();
+        // ll.removeLast();
+        // ll.removeLast();
+        // ll.addLast(3);
+        // ll.print();
         
-        System.out.println(size);
+        // System.out.println(size);
 
-       System.out.println(ll.recSearch(3));
-       System.out.println(ll.search(3));
+    //    System.out.println(ll.recSearch(3));
+    //    System.out.println(ll.search(3));
+
+    //    head = ll.Rev(head);
+    //    ll.print();
+
+    ll.addFirst(1);
+    ll.addFirst(2);
+    ll.addFirst(2);
+    
         
 
+       System.out.println(ll.isPalindrome(head));
     }
 }
 
 
+ 
