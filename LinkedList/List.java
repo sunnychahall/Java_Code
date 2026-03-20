@@ -153,7 +153,23 @@ public class List {
         return index + 1;
                 }
     }
+     
 
+
+    public int search(int data)
+    {
+        int i = 0;
+        while (head.next != null)
+            {
+                if (head.data == data)
+                    {
+                        return i;
+                    }
+                    i++;
+                    head = head.next;
+            }
+        return - 1;
+    }
     
     public static void main(String[] args) {
         size = 0;
@@ -182,6 +198,7 @@ public class List {
         System.out.println(size);
 
        System.out.println(ll.recSearch(3));
+       System.out.println(ll.search(3));
         
 
     }
