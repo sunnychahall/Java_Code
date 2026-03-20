@@ -231,6 +231,34 @@ public class List {
 
         return slow;
     }
+
+    public void RfromLast(int n)
+    {
+        int size = 0;
+        Node temp = head;
+        while (temp != null)
+            {
+                temp = temp.next;
+                size++;
+            }
+        
+        if (n == size)  //remove first
+        {
+            head = head.next;
+            return;
+        }
+
+        int i;
+        int Indx = size - n;
+        Node prev = head;
+        for (i = 1; i < Indx; i++)
+            {
+                prev = prev.next;
+            }
+
+            prev.next = prev.next.next;
+            return;
+    } 
     
     public static void main(String[] args) {
         size = 0;
@@ -267,10 +295,14 @@ public class List {
     ll.addFirst(1);
     ll.addFirst(2);
     ll.addFirst(2);
+    ll.addFirst(62);
+    ll.addFirst(27);
+    ll.addFirst(29);
     
-        
+     ll.RfromLast(1);
+     ll.print();
 
-       System.out.println(ll.isPalindrome(head));
+   // System.out.println(ll.isPalindrome(head));
     }
 }
 
