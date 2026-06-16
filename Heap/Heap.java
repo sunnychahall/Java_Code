@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class heap {
@@ -25,6 +26,58 @@ public class heap {
         System.out.println(heap);
     }
 
+    public void heapify(int root)
+    {
+        int minIndx = root;
+        int l = 2 * root + 1;
+        int r = 2 * root + 2;
+        //update min
+         if (l < heap.size() && heap.get(l) < heap.get(minIndx))
+            {
+                minIndx = l;
+            }
+         if (r < heap.size() && heap.get(r) < heap.get(minIndx))
+            {
+                 minIndx = r;
+            }
+
+
+        if (minIndx != root)
+            {
+                //swap
+                int temp = heap.get(root);
+
+                heap.set(root, heap.get(minIndx));
+
+                heap.set(minIndx, temp);
+
+                heapify(minIndx);
+                
+            }
+    }
+
+    public int delete()
+    {
+        if (heap.isEmpty())
+            return -1;
+
+        int data = heap.get(0);
+
+        //swap
+        int temp = heap.get(heap.size() - 1);
+        heap.set(heap.size() - 1, heap.get(0));
+        heap.set(0, temp);
+       
+        heap.remove(heap.size() - 1);
+        //heapify for root
+        if (!heap.isEmpty()) {
+            heapify(0);
+        }
+
+        //return
+        return data;
+    }
+
     public static void main(String[] args) {
         heap h = new heap();
 
@@ -34,6 +87,8 @@ public class heap {
         h.insert(10);
         h.insert(60);
 
+        h.printHeap();
+        h.delete();
         h.printHeap();
     }
 }
